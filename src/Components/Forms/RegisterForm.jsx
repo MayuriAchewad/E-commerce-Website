@@ -9,6 +9,7 @@ import {
   TextField,
 } from "@mui/material";
 import React from "react";
+import ReactDOM from 'react-dom';
 import * as Yup from "yup";
 import { useFormik } from "formik";
 
@@ -16,7 +17,7 @@ const validationSchema = Yup.object({
   fname: Yup.string().min(2).max(8).required("Require"),
   mname: Yup.string().min(2).max(12).required("Required"),
   lname: Yup.string().min(2).max(12).required("required"),
-  email: Yup.string()
+  email: Yup.string("Enter your email")
     .matches(
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     ).email("Invalid email address format")
@@ -25,8 +26,8 @@ const validationSchema = Yup.object({
   dob: Yup.string().required("required"),
   gender: Yup.string().required("required"),
   username: Yup.string().required("required"),
-  password: Yup.string().required("required"),
-  confirmpass: Yup.string().required("required"),
+  password: Yup.string().min(4,'Password must be at 4 char long').required("Password is mendatory"),
+  confirmpass: Yup.string().required("required").oneOf([Yup.ref('password')],'Passwords does not match'),
 });
 
 export const RegisterForm = () => {
@@ -43,15 +44,18 @@ export const RegisterForm = () => {
     confirmpass: "",
   };
 
-  const onSubmit = (values) => {
-    console.log("---->", values);
-    alert("Form is validated! Submitting the form...")
-    alert("Form is validated and in this block api call should be made...");
-  };
+  
   const formik = useFormik({
     initialValues: initialValues,
-    onSubmit: onSubmit,
+    
     validationSchema: validationSchema,
+    onSubmit : (values) => {
+        // await new Promise((r) => setTimeout(r, 500));
+            alert(JSON.stringify(values, null, 2));
+        // console.log("---->", values);
+        // alert("Form is validated! Submitting the form...")
+        // alert("Form is validated and in this block api call should be made...");
+      },
   });
   console.log(formik.values, "------------>");
 
@@ -76,6 +80,7 @@ export const RegisterForm = () => {
 
         <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
           <TextField
+          id="fname"
             required
             name="fname"
             value={formik.values.fname}
@@ -87,6 +92,7 @@ export const RegisterForm = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
           <TextField
+          id="mname"
             required
             name="mname"
             value={formik.values.mname}
@@ -98,6 +104,7 @@ export const RegisterForm = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
           <TextField
+          id="lname"
             required
             name="lname"
             value={formik.values.lname}
@@ -109,6 +116,7 @@ export const RegisterForm = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={7} xl={7}>
           <TextField
+          id="email"
             required
             name="email"
             value={formik.values.email}
@@ -120,6 +128,7 @@ export const RegisterForm = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
           <TextField
+          id="mob"
             required
             name="mob"
             value={formik.values.mob}
@@ -133,6 +142,7 @@ export const RegisterForm = () => {
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           <span>DOB</span>
           <TextField
+          id="dob"
             required
             value={formik.values.dob}
             onChange={formik.handleChange}
@@ -152,46 +162,10 @@ export const RegisterForm = () => {
             variant="filled"
           >
             <FormLabel>Gender</FormLabel>
-            {/* <RadioButton.Group
-                     onValueChange={formik.handleChange('gender')}
-                     value={formik.values.gender}
-                     >
-                   <View>
-                       <Text>Male</Text>
-                       <RadioButton value='M'></RadioButton>
-                   </View>
-                   <View>
-                       <Text>Female</Text>
-                       <RadioButton value='F'></RadioButton>
-                   </View>
-               </RadioButton.Group> */}
-            {/* <input type="radio"  value='M' name="gender" onValueChange={formik.handleChange('gender')} />
-               <input type="radio" value='F'  name="gender"  onValueChange={formik.handleChange('gender')}/>
-               <input type="radio"  value='Other'  name="gender" onValueChange={formik.handleChange('gender')} /> */}
-            {/* <RadioGroup
-             onValueChange={formik.handleChange('gender')}
-             value={formik.values.gender}
-              row
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="female"
-              name="radio-buttons-group"
-            >
-              <FormControlLabel
             
-                value="female"
-                control={<Radio />}
-                label="Female"
-              />
-              <FormControlLabel            value="male" control={<Radio />} label="Male" />
-              <FormControlLabel
-                          value="other"
-                control={<Radio />}
-                label="Other"
-
-              />
-            </RadioGroup> */}
             <RadioGroup
               row
+              id="gender"
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="female"
               name="gender"
@@ -214,6 +188,7 @@ export const RegisterForm = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12} xl={4}>
           <TextField
+          id="username"
             required
             value={formik.values.username}
             onChange={formik.handleChange}
@@ -230,6 +205,7 @@ export const RegisterForm = () => {
 
         <Grid item xs={12} sm={12} md={12} lg={12} xl={4}>
           <TextField
+          id="password"
             value={formik.values.password}
             onChange={formik.handleChange}
             name="password"
@@ -245,6 +221,7 @@ export const RegisterForm = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12} xl={4}>
           <TextField
+          id="confirmpass"
             value={formik.values.confirmpass}
             onChange={formik.handleChange}
             required
@@ -268,8 +245,11 @@ export const RegisterForm = () => {
             Cancel
           </Button>
         </Grid>
-        {formik.isSubmitting ? (<h1>{formik.isSubmitting}</h1>) : (<h1>Confirmation of Login</h1>)}
+        {/* {formik.isSubmitting ? (<h1>{formik.isSubmitting}</h1>) : (<h1>Confirmation of Login</h1>)} */}
       </Grid>
     </form>
   );
 };
+// ReactDOM.render(<RegisterForm />, document.getElementById('root'));
+// ReactDOM.render(<RegisterForm/>, document.getElementById('root'))
+
