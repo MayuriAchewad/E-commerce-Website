@@ -1,0 +1,10 @@
+.show{
+    display: block;
+    list-style: circle;
+    margin-left: 25px;
+    font-size: 15px;
+  }
+  
+  .hide{
+    display: none;
+  }

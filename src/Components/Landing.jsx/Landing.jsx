@@ -8,7 +8,7 @@ import { Home } from "../Main/Home";
 export const Landing = () =>{
     return(
         <BrowserRouter>
-        <Nav/>
+        <Nav />
         <Routes>
             <Route path="/" element={<LoginForm/>} />
             <Route path="/register" element={<RegisterForm/>} />

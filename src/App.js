@@ -1,11 +1,11 @@
 // import logo from './logo.svg';
-// import './App.css';
-import { Landing } from './Components/Routing/Landing';
+
+import { Landing } from './Components/Roting/Landing';
 
 function App() {
   return (
     <div>
-      <Landing/>
+      <Landing />
     </div>
   );
 }
