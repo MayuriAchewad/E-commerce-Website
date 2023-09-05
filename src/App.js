@@ -1,6 +1,8 @@
 // import logo from './logo.svg';
 
-import { Landing } from './Components/Roting/Landing';
+import { Landing } from "./Components/Routing/Landing";
+
+
 
 function App() {
   return (
