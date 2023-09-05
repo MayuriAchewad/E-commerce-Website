@@ -12,6 +12,7 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import { Link } from "react-router-dom";
 
 const validationSchema = Yup.object({
   fname: Yup.string().min(2).max(8).required("Require"),
@@ -245,6 +246,14 @@ export const RegisterForm = () => {
             Cancel
           </Button>
         </Grid>
+        <Grid item xs={12}>
+            <p>
+              I have already have an registered.{" "}
+              <span style={{ color: "red" }}>
+                <Link to="/"> Login here</Link>
+              </span>
+            </p>
+          </Grid>
         {/* {formik.isSubmitting ? (<h1>{formik.isSubmitting}</h1>) : (<h1>Confirmation of Login</h1>)} */}
       </Grid>
     </form>
