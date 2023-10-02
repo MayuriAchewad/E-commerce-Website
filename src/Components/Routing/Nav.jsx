@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import React, { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
-import  './nav.css';
+import styles from './nav.css';
 
 export const Nav=()=>{
 
@@ -17,9 +17,9 @@ export const Nav=()=>{
     }
 
     return(
-        <main className="show">
+        <main  className={styles.carddesign}>
             <h4 onClick={() => handleToggle("one")}> {drop1 ? "+" : "-"} View </h4>
-        <ul>
+        <ul className={drop1 ? styles.hide : styles.show}>
           <li>Project</li>
           <li>Part / BoM</li>
           <li>Process Plan</li>

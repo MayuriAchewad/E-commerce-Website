@@ -22,6 +22,7 @@ export const Home=()=>{
     return(
         <Grid container spacing={2}>
             <h1>My home</h1>
+            
             <Grid item xs={12}>
 
             </Grid>
