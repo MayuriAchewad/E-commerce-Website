@@ -11,3 +11,4 @@ export const productReducer= (state={product:[],cart:[]}, action)=>{
             }
             return state;
     }
+    

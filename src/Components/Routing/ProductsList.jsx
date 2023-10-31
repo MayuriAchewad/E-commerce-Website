@@ -29,6 +29,7 @@ export const ProductsList = ({handleupdate}) => {
     dispatch(action);
     // await axios.post("http://localhost:1032/addcart",payload)
     
+    
   };
   const handleDelete=(item)=>{
     console.log("dfghjkl",item);
