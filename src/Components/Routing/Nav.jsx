@@ -10,7 +10,7 @@ function Nav() {
             navData.map((item)=>(
                 <Grid item xs={4}>
                     <Link to={item.path}>
-                    <Button>{item.title}</Button>
+                    <Button variant='contained' fullWidth color='success'>{item.title}</Button>
                     </Link>
                     </Grid>
             ))

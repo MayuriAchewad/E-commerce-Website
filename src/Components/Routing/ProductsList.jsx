@@ -22,13 +22,12 @@ export const ProductsList = ({handleupdate}) => {
   }, []);
 
 
-  const handleAddCart =(str) => {
+  const handleAddCart =async(str) => {
     const type = "PRODUCTS";
     const payload = str;
     const action = { type, payload };
     dispatch(action);
-    // await axios.post("http://localhost:1032/addcart",payload)
-    
+    await axios.post("http://localhost:1032/addcart",str)   
     
   };
   const handleDelete=(item)=>{
@@ -39,20 +38,18 @@ export const ProductsList = ({handleupdate}) => {
  
 
   return (
-    <Grid container spacing={2}>
-      
+    <Grid container spacing={2}>     
 
-      <Grid item xs={12}>
-        
+      <Grid item xs={12}>       
        
       </Grid>
       {data.map((item) => (
         <Grid item xs={3}>
-          <Card>
+          <Card sx={{bgcolor:"lightgray"}}>
             <CardContent>
               <Grid container spacing={2} align="center">
                 <Grid item xs={12}>
-                  <img height={120} width={100} src={item.image} alt="" />
+                  <img height={200} width={270} src={item.image} alt="" />
                 </Grid>
                 <Grid item xs={12}>
                   <span>{item.title.slice(1,50)}...</span>
@@ -67,17 +64,15 @@ export const ProductsList = ({handleupdate}) => {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Button variant="contained" onClick={() => handleAddCart(item)}>Add to cart</Button>
+                  <Button fullWidth variant="contained" onClick={() => handleAddCart(item)}>Add to cart</Button>
                 </Grid>
-                <Grid item xs={12}>
-                  <Button variant="contained" onClick={()=>handleDelete(item._id)} >delete</Button>
+                <Grid item xs={6}>
+                  <Button fullWidth color="error" variant="contained" onClick={()=>handleDelete(item._id)} >delete</Button>
                 </Grid>
-                <Grid item xs={12}>
-                  <Button variant="contained" onClick={()=>handleupdate(item)} >Update</Button>
+                <Grid item xs={6}>
+                  <Button fullWidth color="warning" variant="contained" onClick={()=>handleupdate(item)} >Update</Button>
                 </Grid>
-                <Grid item xs={12}>
-                  <CartList/>
-                </Grid>
+                
               </Grid>
             </CardContent>
           </Card>

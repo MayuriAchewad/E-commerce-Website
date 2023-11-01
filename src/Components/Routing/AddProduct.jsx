@@ -50,20 +50,30 @@ const AddProduct = () => {
   
   return (
     <Grid container spacing={3} sx={{marginTop:5}}>
-      <Grid item xs={4}></Grid>
-      <Grid item xs={4}>
-      <Grid container spacing={3}>
+      <Grid item xs={2}></Grid>
+      <Grid item xs={8} sx={{border:"5px inset black",padding:2}}>
+      <Grid container spacing={3} >
       {
         msg && <Alert severity="success">{msg}</Alert>
       }
         
-      <Grid item xs={12}>
+      <Grid item xs={6}>
         <TextField
           value={image}
           onChange={(e) => setImage(e.target.value)}
           variant="outlined"
           fullWidth
           label="Enter Image link"
+        />
+      </Grid>
+      
+      <Grid item xs={6}>
+        <TextField
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          variant="outlined"
+          fullWidth
+          label="Enter Title"
         />
       </Grid>
       <Grid item xs={12}>
@@ -75,16 +85,7 @@ const AddProduct = () => {
           label="Enter Description"
         />
       </Grid>
-      <Grid item xs={12}>
-        <TextField
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          variant="outlined"
-          fullWidth
-          label="Enter Title"
-        />
-      </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={4}>
         <TextField
           value={price}
           onChange={(e) => setPrice(e.target.value)}
@@ -93,7 +94,7 @@ const AddProduct = () => {
           label="Enter Price "
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={4}>
         <TextField
           value={category}
           onChange={(e) => setcategory(e.target.value)}
@@ -102,7 +103,7 @@ const AddProduct = () => {
           label="Enter Price "
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={4}>
         <TextField
           value={rating}
           onChange={(e) => setrating(e.target.value)}
@@ -123,9 +124,7 @@ const AddProduct = () => {
       </Grid>
       </Grid>
       </Grid>
-      <Grid item xs={12}>
-       <ProductsList handleupdate={handleupdate}/>
-      </Grid>
+      
     </Grid>
   );
 };

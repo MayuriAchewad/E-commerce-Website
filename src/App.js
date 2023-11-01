@@ -6,7 +6,7 @@ import { Landing } from "./Components/Routing/Landing";
 function App() {
   const store=configStore()
   return (
-    <div className="App">
+    <div className="App" style={{padding:15}}>
       <Provider store={store}>
         <Landing/>
       </Provider>
