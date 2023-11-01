@@ -35,6 +35,7 @@ export const ProductsList = ({handleupdate}) => {
     axios.post("http://localhost:1032/delete",item)
     getData()
   }
+  
  
 
   return (
@@ -52,26 +53,26 @@ export const ProductsList = ({handleupdate}) => {
                   <img height={200} width={270} src={item.image} alt="" />
                 </Grid>
                 <Grid item xs={12}>
-                  <span>{item.title.slice(1,50)}...</span>
+                  <span>{item.title.slice(1,50)}</span>
                 </Grid>
 
                 <Grid item xs={12}>
-                  <span>{item.description.slice(1,70)}...</span>
+                  <span>{item.description.slice(1,70)}</span>
                 </Grid>
 
                 <Grid item xs={12}>
                   <span>{item.price}</span>
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid item xs={6}>
                   <Button fullWidth variant="contained" onClick={() => handleAddCart(item)}>Add to cart</Button>
                 </Grid>
                 <Grid item xs={6}>
                   <Button fullWidth color="error" variant="contained" onClick={()=>handleDelete(item._id)} >delete</Button>
                 </Grid>
-                <Grid item xs={6}>
+                {/* <Grid item xs={6}>
                   <Button fullWidth color="warning" variant="contained" onClick={()=>handleupdate(item)} >Update</Button>
-                </Grid>
+                </Grid> */}
                 
               </Grid>
             </CardContent>

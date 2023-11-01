@@ -16,10 +16,11 @@ export const CartList=()=>{
     useEffect(() => {
       getData();
     }, []);
+    
 
     const handleDelete=(item)=>{
       console.log("dfghjkl",item);
-      axios.post("http://localhost:1032/delete",item)
+      axios.post("http://localhost:1032/deletecart",item)
       getData()
     }
     

@@ -56,6 +56,9 @@ const AddProduct = () => {
       {
         msg && <Alert severity="success">{msg}</Alert>
       }
+      <Grid item xs={12}>
+        
+      </Grid>
         
       <Grid item xs={6}>
         <TextField
@@ -100,7 +103,7 @@ const AddProduct = () => {
           onChange={(e) => setcategory(e.target.value)}
           variant="outlined"
           fullWidth
-          label="Enter Price "
+          label="Enter Category "
         />
       </Grid>
       <Grid item xs={4}>

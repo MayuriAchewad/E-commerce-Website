@@ -3,7 +3,7 @@ export const productReducer= (state={cart:[],cart:[]}, action)=>{
         case "CART":
             return{
                 ...state,
-                cart:[...state.product,action.payload]
+                cart:[...state.cart,action.payload]
             }
             break;
             default:

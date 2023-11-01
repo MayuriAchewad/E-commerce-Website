@@ -1,6 +1,6 @@
 import { Button, Grid, TextField } from "@mui/material";
 import { useFormik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
@@ -10,19 +10,19 @@ const validationSchema = Yup.object({
 });
 
 export const LoginForm = () => {
+  const[userName,setUsename]=useState("")
+  const[password,setPassWord]=useState("")
 
     const navigate = useNavigate();
 
-    const handleSubmit=()=>{
-     
-        navigate("/home")
-    }
+   
 
 
   const initialValues = {
     username: "",
     password: "",
   };
+ 
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -32,6 +32,16 @@ export const LoginForm = () => {
     },
   });
   console.log(formik.values);
+  const handleSubmit=()=>{
+    const name="mayuri"
+    const pass="12345"
+    if(formik.values.username===name && formik.values.password===pass){
+      navigate("/addprod")
+    }else{
+
+      console.log("username or password does not match");
+    }
+  }
   return (
     <form onSubmit={formik.handleSubmit}>
       <Grid
@@ -39,7 +49,7 @@ export const LoginForm = () => {
         spacing={2}
         sx={{
           width: { xs: 200, sm: 350, md: 500, lg: 650, xl: 700 },
-          margin: "0px auto",
+          margin: "30px auto",
           border: "10px inset brown",
           padding: "20px",
         }}

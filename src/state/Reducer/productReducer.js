@@ -5,6 +5,7 @@ export const productReducer= (state={product:[],cart:[]}, action)=>{
                 ...state,
                 product:[...state.product,action.payload]
             }
+            
             break;
             default:
                 return state;

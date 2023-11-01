@@ -1,6 +1,6 @@
 export const navData= [
     {
-        path:"/",
+        path:"/addprod",
         title:"Add Products"
     },
     {
@@ -11,4 +11,6 @@ export const navData= [
         path:"/cart",
         title:"Cart"
     },
+   
+   
 ]
