@@ -50,10 +50,10 @@ export const ProductsList = ({handleupdate}) => {
             <CardContent>
               <Grid container spacing={2} align="center">
                 <Grid item xs={12}>
-                  <img height={200} width={270} src={item.image} alt="" />
+                  <img height={200} src={item.image} alt="" />
                 </Grid>
                 <Grid item xs={12}>
-                  <span>{item.title.slice(1,50)}</span>
+                  <h3>{item.title.slice(1,50)}</h3>
                 </Grid>
 
                 <Grid item xs={12}>
@@ -61,7 +61,7 @@ export const ProductsList = ({handleupdate}) => {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <span>{item.price}</span>
+                  <h2>Rs. {item.price}</h2>
                 </Grid>
 
                 <Grid item xs={6}>
